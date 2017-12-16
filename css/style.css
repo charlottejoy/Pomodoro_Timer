@@ -1,0 +1,230 @@
+html,
+#all,
+body {
+  text-align: center;
+  background-color: #44c8bc;
+  background: -webkit-linear-gradient(-65deg, #44c8bc, #3bb3d4);
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(65deg, #44c8bc, #3bb3d4);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(65deg, #44c8bc, #3bb3d4);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(65deg, #44c8bc, #3bb3d4);
+  /* Standard syntax */
+  color: #E8F8F5;
+  font-family: helvetica, arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.2;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #E8F8F5;
+}
+
+#all {
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+#pomodoro > *,
+#all > *,
+#actions> *,
+#time-setting>* {
+  box-sizing: border-box;
+}
+
+#pomodoro {
+  margin: 0;
+  padding: 0;
+}
+
+#work-time-div,
+#work-time-div > * {
+  background-color: #44B3C8;
+}
+
+#work-time-div,
+#break-time-div>* {
+  box-sizing: border-box;
+}
+
+#title,
+.minutes {
+  display: none;
+}
+
+#break-time-div,
+#break-time-div > * {
+  background-color: #4492C8;
+}
+
+.button {
+  border: none;
+  font-family: helvetica, arial, sans-serif;
+}
+
+#work-time,
+#break-time {
+  font-size: 150%;
+  font-weight: 700;
+}
+
+.time {
+  text-align: center;
+  width: 80%;
+  font-size: 125%;
+  font-weight: 700;
+  border: none;
+}
+
+#type-display {
+  clear: both;
+}
+
+#time-setting {
+  clear: both;
+  font-weight: 500;
+}
+
+#starter,
+#reseter {
+  float: left;
+  width: 20%;
+  font-weight: 700;
+  height: 100%;
+}
+
+#timer {
+  float: left;
+  width: 60%;
+  margin: 0;
+  font-weight: 100;
+  font-size: 200%;
+}
+
+.type {
+  text-align: center;
+  width: 50%;
+  float: left;
+}
+
+input {
+  color: #E8F8F5
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.selected {
+  background-color: #44C8BC;
+}
+
+#help {
+  display: none;
+  clear: both;
+  width: 100%;
+  padding: .5em;
+  font-weight: 700;
+}
+
+#help-explain {
+  font-weight: 700;
+}
+
+#help-container {
+  background-color: #4471C8;
+  opacity: .95;
+  border-radius: 25px;
+  z-index: 1;
+  position: fixed;
+  overflow: auto;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 1em;
+  top: 0;
+  height: 80%;
+  text-align: left;
+}
+
+#close {
+  text-align: right;
+  line-height: 2em;
+  margin-right: 1em;
+}
+
+
+/* ----------- Apple Watch ----------- */
+
+@media (max-device-width: 42mm) and (min-device-width: 38mm) {}
+
+
+/* ----------- Moto 360 Watch ----------- */
+
+@media (max-device-width: 218px) and (max-device-height: 281px) {}
+
+
+/* Custom, iPhone Retina */
+
+@media only screen and (min-width: 320px) {
+  #title, .minutes, #help {
+    display: block
+  }
+  #work-time-div:hover,
+  #break-time-div:hover {}
+  #starter,
+  #reseter,
+  #help,
+  #type-display {
+    font-size: 150%;
+  }
+}
+
+
+/* Extra Small Devices, Phones */
+
+@media only screen and (min-width: 480px) {
+  .time {
+    font-size: 300%;
+  }
+  #starter,
+  #reseter,
+  #type-display {
+    font-size: 175%;
+  }
+  #title {
+    font-size: 150%;
+  }
+  #timer {
+    font-size: 400%;
+  }
+  .minutes {
+    font-size: 150%;
+  }
+}
+
+
+/* Small Devices, Tablets */
+
+@media only screen and (min-width: 1200px) {
+  #starter,
+  #reseter,
+  #type-display,
+  {
+    font-size: 300%;
+  }
+  #timer {
+    font-size: 600%;
+  }
+  #title {
+    font-size: 200%;
+  }
+}

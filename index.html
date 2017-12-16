@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>FCC Pomodoro</title>
+  
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+  <html>
+
+<head>
+
+  <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+
+
+  <script type="text/javascript" src="script.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <div id="all">
+    <div id="pomodoro">
+      <p id="title" onclick="requireCode()">Focus on one purposeful thing in this moment.</p>
+
+      <div id="actions">
+        <div id="starter" class="button" onclick="start()">Start</div>
+        <p id="timer">25:00</p>
+
+        <div id="reseter" class="button" onclick="reset()">Reset</div>
+        <p id="type-display">work</p>
+      </div>
+
+      <div id="time-setting">
+
+        <div class="type" id="work-time-div" onClick="initialize('work')">
+
+          <input type="number" id="work-minutes" min="0" value="25" class="time">
+
+          <p class="minutes"> minutes </p>
+
+          <div id="work-time" onClick="initialize('work')">Work</div>
+        </div>
+        <div class="type" id="break-time-div" onClick="initialize('break')">
+
+
+          <input type="number" id="break-minutes" min="0" value="5" class="time">
+
+          <p class="minutes"> minutes </p>
+
+          <div id="break-time" onClick="initialize('break')">Break</div>
+        </div>
+      </div>
+    </div>
+    <p id="help" onclick="helpModal()">What's a Pomodoro?</p>
+  </div>
+  <div id="help-container">
+    <p id="help-explain">About the Pomodoro technique
+      <p>
+        <p>From <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank">Wikipedia:</a><br/> There are six steps in the technique:
+          <p>
+            <ol>
+              <li>Decide on the task to be done.</li>
+              <li>Set the pomodoro timer (traditionally to 25 minutes).</li>
+              <li>Work on the task until the timer rings. If a distraction pops into your head, write it down, but immediately get back on task.</li>
+              <li>After the timer rings, put a checkmark on a piece of paper.</li>
+              <li>If you have fewer than four checkmarks, take a short break (3–5 minutes), then go to step 1.</li>
+              <li>After four pomodoros, take a longer break (15–30 minutes), reset your checkmark count to zero, then go to step 1.</li>
+            </ol>
+            <p/>
+
+            <p id="close" onclick="closeModal()">Close</p>
+  </div>
+
+
+</body>
+
+</html>
+  
+    <script  src="js/index.js"></script>
+
+</body>
+</html>

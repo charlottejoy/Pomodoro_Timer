@@ -1,5 +1,4 @@
 html,
-#all,
 body {
   text-align: center;
   background-color: #44c8bc;
@@ -11,29 +10,39 @@ body {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(65deg, #44c8bc, #3bb3d4);
   /* Standard syntax */
-  color: #E8F8F5;
+  color: #e8f8f5;
   font-family: helvetica, arial, sans-serif;
-  font-size: 16px;
   line-height: 1.2;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
 }
 
 a {
-  color: #E8F8F5;
+  color: #e8f8f5;
 }
 
 #all {
   top: 0;
   left: 0;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 0;
   width: 100%;
+  max-width: 1600px;
 }
 
 #pomodoro > *,
 #all > *,
-#actions> *,
-#time-setting>* {
+#actions > *,
+#time-setting > *,
+#work-time-div,
+#break-time-div > * {
   box-sizing: border-box;
 }
 
@@ -44,12 +53,7 @@ a {
 
 #work-time-div,
 #work-time-div > * {
-  background-color: #44B3C8;
-}
-
-#work-time-div,
-#break-time-div>* {
-  box-sizing: border-box;
+  background-color: #44b3c8;
 }
 
 #title,
@@ -59,7 +63,7 @@ a {
 
 #break-time-div,
 #break-time-div > * {
-  background-color: #4492C8;
+  background-color: #4492c8;
 }
 
 .button {
@@ -113,24 +117,24 @@ a {
 }
 
 input {
-  color: #E8F8F5
+  color: #e8f8f5;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 .selected {
-  background-color: #44C8BC;
+  background-color: #44c8bc;
 }
 
 #help {
   display: none;
   clear: both;
   width: 100%;
-  padding: .5em;
+  padding: 0.5em;
   font-weight: 700;
 }
 
@@ -139,8 +143,8 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 #help-container {
-  background-color: #4471C8;
-  opacity: .95;
+  background-color: #4471c8;
+  opacity: 0.95;
   border-radius: 25px;
   z-index: 1;
   position: fixed;
@@ -153,6 +157,7 @@ input[type=number]::-webkit-outer-spin-button {
   top: 0;
   height: 80%;
   text-align: left;
+  font-size: 150%;
 }
 
 #close {
@@ -161,25 +166,27 @@ input[type=number]::-webkit-outer-spin-button {
   margin-right: 1em;
 }
 
-
 /* ----------- Apple Watch ----------- */
 
-@media (max-device-width: 42mm) and (min-device-width: 38mm) {}
-
+@media (max-device-width: 42mm) and (min-device-width: 38mm) {
+}
 
 /* ----------- Moto 360 Watch ----------- */
 
-@media (max-device-width: 218px) and (max-device-height: 281px) {}
-
+@media (max-device-width: 218px) and (max-device-height: 281px) {
+}
 
 /* Custom, iPhone Retina */
 
 @media only screen and (min-width: 320px) {
-  #title, .minutes, #help {
-    display: block
+  #title,
+  .minutes,
+  #help {
+    display: block;
   }
   #work-time-div:hover,
-  #break-time-div:hover {}
+  #break-time-div:hover {
+  }
   #starter,
   #reseter,
   #help,
@@ -187,7 +194,6 @@ input[type=number]::-webkit-outer-spin-button {
     font-size: 150%;
   }
 }
-
 
 /* Extra Small Devices, Phones */
 
@@ -211,14 +217,12 @@ input[type=number]::-webkit-outer-spin-button {
   }
 }
 
-
 /* Small Devices, Tablets */
 
 @media only screen and (min-width: 1200px) {
   #starter,
   #reseter,
-  #type-display,
-  {
+  #type-display {
     font-size: 300%;
   }
   #timer {

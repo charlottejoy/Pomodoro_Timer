@@ -7,7 +7,9 @@
 var type;
 var minutes;
 var totalTime;
+var modalState = "closed";
 var audio = new Audio("http://www.buddhanet.net/filelib/audio/tinsha.wav");
+audio.volume = 0.2;
 
 $("#help-container").hide();
 $("#work-time").click(function() {
@@ -24,45 +26,46 @@ $("#break-time-div").click(function() {
   $("#break-minutes").focus();
 });
 
-$("#work-minutes").keypress(function(e) {
-  if (e.keyCode == 13) { //if the key is ascii 13= enter
-    type = "work";
-    initialize('work');
-  }
-  if (e.keyCode == 32) {
+//Spacebar starts the clock if help modal is closed
+$(document).keypress(function(e) {
+  if (modalState == "closed" && e.keyCode == 32) {
     start();
+  }
+});
+
+$("#work-minutes").keypress(function(e) {
+  if (e.keyCode == 13) {
+    //if the key is ascii 13= enter
+    type = "work";
+    initialize("work");
   }
 });
 
 $("#break-minutes").keypress(function(e) {
-  if (e.keyCode == 13) { //if the key is ascii 13= enter
+  if (e.keyCode == 13) {
+    //if the key is ascii 13= enter
     type = "break";
-    initialize('break');
-  }
-  if (e.keyCode == 32) {
-    start();
+    initialize("break");
   }
 });
 
 function helpModal() {
-
   $("#help-container").slideDown();
   $("#help").slideUp();
-
-};
+  modalState = "open";
+}
 
 function closeModal() {
   $("#help-container").slideUp();
   $("#help").slideDown();
-
-};
+  modalState = "closed";
+}
 
 function initialize(type) {
-
   minutes = Number(document.getElementById(type + "-minutes").value);
 
   totalTime = minutes * 60;
-  seconds = 00;
+  seconds = 0;
   if (minutes < 0) {
     alert("only positive numbers please");
     reset();
@@ -70,74 +73,76 @@ function initialize(type) {
 
   document.getElementById("type-display").innerText = type;
 
-  document.getElementById("timer").innerText = minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
+  document.getElementById("timer").innerText =
+    minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
   document.getElementById("starter").innerText = "Start";
 
   clearInterval(myCounter);
-
-};
+}
 
 function countdown() {
   if (minutes === 0 && seconds === 0) {
     audio.play();
-  setTimeout(function() {
-     $("#starter").hide();
+    setTimeout(function() {
+      $("#starter").hide();
       reset();
     }, 10000);
-   
   } else {
-
     if (seconds > 0) {
       seconds--;
-      document.getElementById("timer").innerText = minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
+      document.getElementById("timer").innerText =
+        minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
     } else if (seconds === 0 && minutes > 0) {
       minutes--;
       seconds = 59;
-      document.getElementById("timer").innerText = minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
+      document.getElementById("timer").innerText =
+        minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
     }
   }
   //changeColor();?
-};
+}
 
 function start() {
   $("#reset").show();
 
-  if (document.getElementById("starter").innerText === "Start" && document.getElementById("timer").innerText.indexOf("25:00") != -1) {
+  if (
+    document.getElementById("starter").innerText === "Start" &&
+    document.getElementById("timer").innerText.indexOf("25:00") != -1
+  ) {
     minutes = 25;
     seconds = 0;
-    document.getElementById("timer").innerText = minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
+    document.getElementById("timer").innerText =
+      minutes.toString() + " : " + ("00" + seconds.toString()).slice(-2);
     $("#time-setting, #help").slideUp();
 
     myCounter = setInterval(countdown, 1000);
     //give button "pause" text
     document.getElementById("starter").innerText = "Pause";
-
-  } else if (document.getElementById("starter").innerText === "Start" || document.getElementById("starter").innerText === "Resume") {
+  } else if (
+    document.getElementById("starter").innerText === "Start" ||
+    document.getElementById("starter").innerText === "Resume"
+  ) {
     //every second call countdown
     $("#time-setting, #help").slideUp();
     myCounter = setInterval(countdown, 1000);
     //give button "pause" text
     document.getElementById("starter").innerText = "Pause";
-
   } else if (document.getElementById("starter").innerText === "Pause") {
     $("#time-setting, #help").slideDown();
     document.getElementById("starter").innerText = "Resume";
     clearInterval(myCounter); //stops the timer from running at the interval set above
-
   }
-
-};
+}
 
 function reset() {
   $("#time-setting, #help").slideDown();
   if (document.getElementById("starter").innerText === "Pause") {
     document.getElementById("starter").innerText = "Start";
-  };
+  }
   clearInterval(myCounter);
 
   initialize(document.getElementById("type-display").innerText);
 
   $("#starter").show();
   $("#reset").hide();
-
-};
+}
